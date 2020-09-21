@@ -1,8 +1,16 @@
-.App {
+.logIn {
   display: flex;
   flex-direction: column;
   align-items: center; 
   text-align: center;
+}
+
+.signUp{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+
 }
 
 header{
@@ -16,6 +24,13 @@ h1{
 }
 
 .logInForm{
+  width: 30%;
+  border: 5px black solid;
+  border-radius: 30px;
+  padding-bottom: 45px;
+}
+
+.signUpForm{
   width: 30%;
   border: 5px black solid;
   border-radius: 30px;
