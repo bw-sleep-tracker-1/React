@@ -10,7 +10,7 @@ const App = () => {
   //initial state
   const [logInState, setLogInState] = useState({
 
-    email: "",
+    username: "",
     password:"",
 
   });
@@ -18,7 +18,7 @@ const App = () => {
   //state for Errors
   const [errors, setErrors] = useState({
 
-    email: "",
+    username: "",
     password:"",
 
   });

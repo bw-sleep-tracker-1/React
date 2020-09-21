@@ -42,7 +42,7 @@ const formSubmit = event => {
         console.log("success",post);
         
         setLogInState({
-            email: "",
+            username: "",
             password: "",
         })
     })
@@ -80,13 +80,13 @@ const inputChange = event => {
             <br/>
                <form onSubmit={formSubmit}>
                <input 
-               className='email' 
-               name='email' 
-               type='email'
-               value={logInState.email}
+               className='username' 
+               name='username' 
+               type='text'
+               value={logInState.username}
                onChange={inputChange} 
-               placeholder='Enter your Email'/><br/>
-               {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
+               placeholder='Enter your User Name'/><br/>
+               {errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
                <br/>
                <input 
                className='password' 
