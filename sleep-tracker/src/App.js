@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
-import { Route } from "react-router-dom";
-import "./App.css";
-import * as yup from "yup";
-import axios from "axios";
-import schema from "./components/validation/signSchema";
 
-const initialFormValues = {
+import React, { useState, useEffect } from 'react';
+import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
+import { Route } from 'react-router-dom';
+    import axios from "axios";
+    import * as yup from "yup";
+import formSchema from './validation/formSchema';
+    import schema from "./components/validation/signSchema";
+import './App.css';
+
+    const initialFormValues = {
   username: "",
   email: "",
   fName: "",
@@ -25,14 +27,13 @@ const initialFormErrors = {
 
 const initialUsers = [];
 const initialDisabled = true;
-
-function App() {
-  const [users, setUsers] = useState(initialUsers);
+    
+const App = () => {
+ const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-
-  const getUsers = () => {
+     const getUsers = () => {
     axios
       .get("https://reqres.in/api/users")
       .then((res) => {
@@ -111,25 +112,64 @@ function App() {
     });
   }, [formValues]);
 
-  return (
-    <>
-      <Route exact path="/">
-        <LogIn />
-      </Route>
+    
+  //initial state
+  const [logInState, setLogInState] = useState({
 
-      <Route path="/SignUp">
-        <SignUp
-          users={users}
+    username: "",
+    password:"",
+
+  });
+
+  //state for Errors
+  const [errors, setErrors] = useState({
+
+    username: "",
+    password:"",
+
+  });
+
+  //button state
+const [buttonDisabled, setButtonDisabled] = useState(true);
+
+useEffect(() => {
+formSchema.isValid(logInState).then(valid => {
+  setButtonDisabled(!valid)
+})
+},[logInState]);
+
+//post state
+const [post, setPost] = useState([]);
+
+  return (
+   <>
+    <Route exact path="/">
+    <LogIn 
+    logInState={logInState}
+    setLogInState={setLogInState}
+    errors={errors}
+    setErrors={setErrors}
+    buttonDisabled={buttonDisabled}
+    post={post}
+    setPost={setPost}
+     />
+    </Route>
+
+    <Route path="/signup">
+    <SignUp 
+     users={users}
           setUsers={setUsers}
           formValues={formValues}
           setFormValues={setFormValues}
           formErrors={formErrors}
           setFormErrors={setFormErrors}
           disabled={disabled}
-          setDisabled={setDisabled}
-        />
-      </Route>
-    </>
+          setDisabled={setDisabled}/>
+    </Route>
+
+  </>  
+
+
   );
 }
 
