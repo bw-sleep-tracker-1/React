@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import LogIn from './components/LogIn';
-import SignUp from './components/SignUp';
+import SignUp from './components/Signup';
 import { Route } from 'react-router-dom';
-    import axios from "axios";
-    import * as yup from "yup";
+import axios from "axios";
+import * as yup from "yup";
 import formSchema from './validation/formSchema';
-    import schema from "./components/validation/signSchema";
+import schema from "./components/validation/signSchema";
 import './App.css';
 
     const initialFormValues = {
