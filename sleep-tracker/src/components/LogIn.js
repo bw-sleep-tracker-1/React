@@ -71,11 +71,16 @@ const inputChange = event => {
         
             <header>
                 <h1>.logo</h1>
+                <nav>
+                    <ul>Home</ul>
+                    <ul>About</ul>
+                    <ul>Sign Up</ul>
+                </nav>
             </header>
        
        
         <div className="logInForm">
-            <h2>Log In</h2>
+            <h2>Zzz.</h2>
             <p>Track a better sleep.</p>
             <br/>
                <form onSubmit={formSubmit}>
@@ -85,7 +90,7 @@ const inputChange = event => {
                type='text'
                value={logInState.username}
                onChange={inputChange} 
-               placeholder='Enter your User Name'/><br/>
+               placeholder='User Name'/><br/>
                {errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
                <br/>
                <input 
@@ -94,7 +99,7 @@ const inputChange = event => {
                type='password'
                value={logInState.password}
                onChange={inputChange} 
-               placeholder='Enter your Password'/><br/>
+               placeholder='Password'/><br/>
                {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
                <br/>
                <button disabled={buttonDisabled}>Log In</button>
