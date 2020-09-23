@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 import formSchema from '../validation/formSchema';
-import axios from 'axios';
+// import axiosWithAuth from '../components/axiosWithAuth'
+import axios from 'axios'
+
 
 const LogIn = (props) => {
 
@@ -30,10 +33,16 @@ const LogIn = (props) => {
   });
 };
 
+    const history = useHistory();
+
     const formSubmit = event => {
         event.preventDefault();
         axios.post('https://lambda-bw-sleep-tracker.herokuapp.com/auth/login', logInState)
         .then(response => {
+
+          // localStorage.setItem('token', response.data.payload)
+          // history.push('/signup')
+
             setPost(response.data);
             console.log("success",post);
             
