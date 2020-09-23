@@ -138,7 +138,7 @@ const SignUp = ({ setPost }) => {
             />
             <br />
             <br />
-            <button disabled={disabled}>Create Sleep Profile!</button>
+            <button>Create Sleep Profile!</button>
             <div className="errors">
               <div>{errors.username}</div>
               <div>{errors.password}</div>

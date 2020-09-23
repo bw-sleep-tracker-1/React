@@ -46,7 +46,10 @@ function App() {
 
   const postNewUser = (newUser) => {
     axios
-      .post("https://reqres.in/api/users", newUser)
+      .post(
+        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/signup",
+        newUser
+      )
       .then((res) => {
         setUsers([...users, res.data]);
         setFormValues(initialFormValues);
