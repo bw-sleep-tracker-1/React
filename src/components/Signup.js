@@ -1,148 +1,163 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-import schema from "./validation/signSchema";
+import signSchema from "../validation/signSchema";
+import * as yup from "yup";
 // import App from "./App";
 
-const initialFormValues = {
-  username: "",
-  email: "",
-  fName: "",
-  lName: "",
-  password: "",
-};
 
-const initialFormErrors = {
-  username: "",
-  email: "",
-  fName: "",
-  lName: "",
-  password: "",
-};
+const SignUp = (props) => {
 
-const initialDisabled = true;
 
-const SignUp = ({ setPost }) => {
-  // const users = props.users;
-  // console.log(users);
-  // const setUsers = props.setUsers;
-  // const formValues = props.formValues;
-  // const setFormValues = props.setFormValues;
-  // const formErrors = props.formErrors;
-  // const setFormErrors = props.setFormErrors;
-  // const disabled = props.disabled;
+  const users = props.users;
+  const setUsers = props.setUsers;
+  const formErrors = props.formErrors;
+  const setFormErrors = props.setFormErrors;
+  const disabled = props.disabled;
   // const setDisabled = props.setDisabled;
-  const [user, setUser] = useState([]);
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [disabled, setDisabled] = useState(initialDisabled);
-  const [errors, setFormErrors] = useState(initialFormErrors);
+  const userPost = props.userPost;
+  const setUserPost = props.setUserPost;
 
-  const changeHandler = (evt) => {
-    const { name, value } = evt.target;
-    setFormValues({ ...formValues, [evt.target.name]: evt.target.value });
+  //validation
+
+  const validateChange = (e) => {
+    yup
+      .reach(signSchema, e.target.name)
+      .validate(e.target.value)
+      .then((valid) => {
+        setFormErrors({
+          ...formErrors,
+          [e.target.name]: "",
+        });
+      })
+      .catch((err) => {
+        setFormErrors({
+          ...formErrors,
+          [e.target.name]: err.formErrors[0],
+        });
+      });
   };
 
-  const submitHandler = (evt) => {
-    evt.preventDefault();
-    // submit();
-    const newUser = {
-      fName: formValues.fName.trim(),
-      lName: formValues.lName.trim(),
-      username: formValues.username.trim(),
-      email: formValues.email.trim(),
-      password: formValues.password.trim(),
+      // .catch((err) => console.log("error", err));
+
+
+
+
+
+  const formSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/signup",
+        userPost
+      )
+      .then((response) => {
+        setUsers(response.data);
+        console.log("success", userPost);
+
+        setUserPost({
+          username: "",
+          email: "",
+          fName: "",
+          lName: "",
+          password: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  const inputChange = (event) => {
+    event.persist();
+    const newFormData = {
+      ...userPost,
+      [event.target.name]:
+        event.target.type === "checkbox"
+          ? event.target.checked
+          : event.target.value,
     };
-    setUser([...user, newUser]);
-    setFormValues(initialFormValues);
+    validateChange(event);
+    setUserPost(newFormData);
   };
 
   return (
     <>
-      {user.map((prof, idx) => {
-        return (
-          <div key={idx}>
-            {prof.fName}
-            <br />
-            {prof.lName}
-            <br />
-            {prof.username}
-            <br />
-            {prof.email}
-            <br />
-            {prof.password}
-            <br />
-          </div>
-        );
-      })}
-      <form onSubmit={submitHandler}>
-        <div className="App">
+      
+        <div className="signUp">
           <h2>Sleep better. Feel better. Live better. TODAY!</h2>
-          <div className="errors">
-            <div>{errors.username}</div>
-            <div>{errors.email}</div>
-            <div>{errors.fName}</div>
-            <div>{errors.lName}</div>
-            <div>{errors.password}</div>
-          </div>
+      
           <div className="logInForm">
             <h2>Sign Up!</h2>
             <p>Join Sleep Tracker for better sleep.</p>
             <br />
-
+            <form onSubmit={formSubmit}>
             <input
               className="fName"
               name="fName"
-              type="fName"
-              value={formValues.fName}
-              onChange={changeHandler}
+              type="text"
+              value={users.fName}
+              onChange={inputChange}
               placeholder="Enter your First Name"
             />
             <br />
+            {/* {formErrors.fname.length > 0 ? (
+              <p className="error">{formErrors.fname}</p>
+            ) : null} */}
             <br />
             <input
               className="lName"
               name="lName"
-              type="lName"
-              value={formValues.lName}
-              onChange={changeHandler}
+              type="text"
+              value={users.lName}
+              onChange={inputChange}
               placeholder="Enter your Last Name"
             />
             <br />
+            {/* {formErrors.lname.length > 0 ? (
+              <p className="error">{formErrors.lname}</p>
+            ) : null} */}
             <br />
             <input
               className="username"
               name="username"
-              type="username"
-              value={formValues.username}
-              onChange={changeHandler}
+              type="text"
+              value={users.username}
+              onChange={inputChange}
               placeholder="Create your User Name"
             />
             <br />
+            {/* {formErrors.username.length > 0 ? (
+              <p className="error">{formErrors.username}</p>
+            ) : null} */}
             <br />
             <input
               className="email"
               name="email"
               type="email"
-              value={formValues.email}
-              onChange={changeHandler}
+              value={users.email}
+              onChange={inputChange}
               placeholder="Enter your Email"
             />
             <br />
+            {/* {formErrors.email.length > 0 ? (
+              <p className="error">{formErrors.email}</p>
+            ) : null} */}
             <br />
             <input
               className="password"
               name="password"
               type="password"
-              value={formValues.password}
-              onChange={changeHandler}
+              value={users.password}
+              onChange={inputChange}
               placeholder="Create your Password"
             />
             <br />
+            {/* {formErrors.password.length > 0 ? (
+              <p className="error">{formErrors.password}</p>
+            ) : null} */}
             <br />
             <button disabled={disabled}>Create Sleep Profile!</button>
-            <div className="errors">
-              <div>{errors.username}</div>
-              <div>{errors.password}</div>
-            </div>
+
             <br />
             <br />
             <a href="/">
@@ -150,9 +165,10 @@ const SignUp = ({ setPost }) => {
               <br />
               Sign-In to get better sleep!
             </a>
+            </form>
           </div>
         </div>
-      </form>
+      
     </>
   );
 };
