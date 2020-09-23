@@ -9,7 +9,9 @@ import formSchema from './validation/formSchema';
 import schema from "./components/validation/signSchema";
 import './App.css';
 
-    const initialFormValues = {
+  //signup Form 
+
+const initialFormValues = {
   username: "",
   email: "",
   fName: "",
@@ -29,10 +31,12 @@ const initialUsers = [];
 const initialDisabled = true;
     
 const App = () => {
- const [users, setUsers] = useState(initialUsers);
+
+  const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+
      const getUsers = () => {
     axios
       .get("https://reqres.in/api/users")
@@ -113,6 +117,9 @@ const App = () => {
   }, [formValues]);
 
     
+
+ ///log in form 
+
   //initial state
   const [logInState, setLogInState] = useState({
 
