@@ -33,7 +33,7 @@ const LogIn = (props) => {
   });
 };
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const formSubmit = event => {
         event.preventDefault();
