@@ -6,61 +6,28 @@ import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
 import "./App.css";
 
-
-
-<<<<<<< HEAD
-// const initialFormErrors = {
-//   username: "",
-//   email: "",
-//   fName: "",
-//   lName: "",
-//   password: "",
-// };
-
-// const initialUsers = [];
-// const initialDisabled = true;
-
 const App = () => {
+  //sign up form state
+
+  // initial state
   const [newUserState, setNewUserState] = useState({
-=======
-
-const App = () => {
-
-
-  //sign up form state 
-
-// initial state
-  const [newUserState, setNewUserState] = useState({
-
->>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
-
 
   //state for errors
   const [formError, setFormError] = useState({
-
-<<<<<<< HEAD
-  const [formError, setFormError] = useState({
-=======
->>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
 
-<<<<<<< HEAD
-=======
-  //button state 
->>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
+  //button state
   const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
@@ -68,16 +35,9 @@ const App = () => {
       setButtDisabled(!valid);
     });
   }, [newUserState]);
-<<<<<<< HEAD
-=======
 
->>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
-
-  //post state 
+  //post state
   const [userPost, setUserPost] = useState([]);
-
-
-
 
   ///log in form
 
@@ -123,11 +83,6 @@ const App = () => {
         <SignUp
           newUserState={newUserState}
           setNewUserState={setNewUserState}
-<<<<<<< HEAD
-          // formValues={formValues}
-          // setFormValues={setFormValues}
-=======
->>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
           formError={formError}
           setFormError={setFormError}
           buttDisabled={buttDisabled}
