@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LogIn from "./components/LogIn";
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 import { Route } from "react-router-dom";
-// import axios from "axios";
-// import * as yup from "yup";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
 import "./App.css";
@@ -16,44 +14,44 @@ const App = () => {
 
   //sign up form state 
 
-const initialDisabled = true;
-
-
-
 // initial state
-  const [users, setUsers] = useState({
+  const [newUserState, setNewUserState] = useState({
+
     username: "",
     email: "",
-    fName: "",
-    lName: "",
+    first_name: "",
+    last_name: "",
     password: "",
+
   });
 
 
   //state for errors
-  const [formErrors, setFormErrors] = useState({
+  const [formError, setFormError] = useState({
+
     username: "",
     email: "",
-    fName: "",
-    lName: "",
+    first_name: "",
+    last_name: "",
     password: "",
+
   });
 
   //button state 
-  const [disabled, setDisabled] = useState(initialDisabled);
+  const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
-    signSchema.isValid(users).then((valid) => {
-      setDisabled(!valid);
+    signSchema.isValid(newUserState).then((valid) => {
+      setButtDisabled(!valid);
     });
-  }, [users]);
+  }, [newUserState]);
 
 
   //post state 
   const [userPost, setUserPost] = useState([]);
 
 
-  
+
 
   ///log in form
 
@@ -97,14 +95,12 @@ const initialDisabled = true;
 
       <Route path="/signup">
         <SignUp
-          users={users}
-          setUsers={setUsers}
-          // formValues={formValues}
-          // setFormValues={setFormValues}
-          formErrors={formErrors}
-          setFormErrors={setFormErrors}
-          disabled={disabled}
-          setDisabled={setDisabled}
+          newUserState={newUserState}
+          setNewUserState={setNewUserState}
+          formError={formError}
+          setFormError={setFormError}
+          buttDisabled={buttDisabled}
+          setButtDisabled={setButtDisabled}
           userPost={userPost}
           setUserPost={setUserPost}
         />

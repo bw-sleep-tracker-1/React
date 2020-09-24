@@ -2,7 +2,6 @@ import React from "react";
 // import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import formSchema from "../validation/formSchema";
-
 // import axiosWithAuth from '../components/axiosWithAuth'
 import axios from "axios";
 
@@ -37,11 +36,7 @@ const LogIn = (props) => {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",
-        logInState
-      )
+    axios.post("https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",logInState)
       .then((response) => {
         // localStorage.setItem('token', response.data.payload)
         // history.push('/signup')
@@ -77,9 +72,9 @@ const LogIn = (props) => {
       <header>
         <h1>.Logo</h1>
         <nav>
-          <ul>Home</ul>
-          <ul>About</ul>
-          <ul>Sign Up</ul>
+          <ul className="aNav">Home</ul>
+          <ul className="bNav">About</ul>
+          <ul className="cNav">Sign Up</ul>
         </nav>
       </header>
 
@@ -114,11 +109,11 @@ const LogIn = (props) => {
             <p className="error">{errors.password}</p>
           ) : null}
           <br />
-          <button disabled={buttonDisabled}>Log In</button>
+          <button disabled={buttonDisabled}>Login</button>
         </form>
         <br />
         <br />
-        <a href="./SignUp">
+        <a href="./signup">
           Not a Member?
           <br />
           Sign-Up to get better sleep.
