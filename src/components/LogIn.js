@@ -43,6 +43,7 @@ const StyledForm = styled.div`
       transition: all 0.8s ease-in-out;
       
     }
+    }
 `;
 
 const LogIn = (props) => {
@@ -115,7 +116,7 @@ const LogIn = (props) => {
     <StyledForm>
       <div className="logIn">
         <header>
-          <h1>.Logo</h1>
+          <h1><img src="https://i.imgur.com/i9SkgxT.png" alt="logo" width="100" height="80"/></h1>
           <nav>
             <ul>
               <a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">
@@ -177,11 +178,11 @@ const LogIn = (props) => {
 
         <footer>
           <p2>
-            © 2020 Sleep Tracker, LLC
-            <br />
-            Info@SleepTracker.COM
+          
+            Info@SleepTracker.com<br/>
             <br /> Special Thanks to
             <br /> Lambda School Build Team!
+            <br />© 2020 Sleep Tracker, LLC
           </p2>
         </footer>
       </div>

@@ -4,9 +4,8 @@ import * as yup from "yup";
 import signSchema from "../validation/signSchema";
 // import axiosWithAuth from '../components/axiosWithAuth'
 import axios from "axios";
-
 import styled, { keyframes } from "styled-components";
-
+// styled components
 const kf = keyframes`
 50% {
   transform: scale(0.8);
@@ -15,36 +14,30 @@ const kf = keyframes`
     opacity: 1;
     transform: scale(1);
   }
-
-  
 `;
-
 const StyledForm = styled.div`
   opacity: 0;
   transform: scale(2);
   animation: ${kf} 2s forwards;
-
   transition: all 0.3s ease-in-out;
   &:hover {
     transition: all 0.3s ease-in-out;
       }
       button {
-    
     transition: all 0.8s ease-in-out;
     &:hover {
       transition: all 0.8s ease-in-out;
-      
     }
   }
-
     a {
-    
     transition: all 0.8s ease-in-out;
     &:hover {
       transition: all 0.8s ease-in-out;
-      
     }
+  }
 `;
+
+
 
 const SignUp = (props) => {
   const newUserState = props.newUserState;
@@ -54,9 +47,7 @@ const SignUp = (props) => {
   const buttDisabled = props.buttDisabled;
   const userPost = props.userPost;
   const setUserPost = props.setUserPost;
-
   //validation
-
   const validateChange = (e) => {
     yup
       .reach(signSchema, e.target.name)
@@ -74,7 +65,6 @@ const SignUp = (props) => {
         });
       });
   };
-
   const formSubmit = (event) => {
     event.preventDefault();
     axios
@@ -85,7 +75,6 @@ const SignUp = (props) => {
       .then((response) => {
         setUserPost(response.data);
         console.log("success", userPost);
-
         setNewUserState({
           username: "",
           email: "",
@@ -98,7 +87,6 @@ const SignUp = (props) => {
         console.log(err.response);
       });
   };
-
   const inputChange = (event) => {
     event.persist();
     const newFormData = {
@@ -111,12 +99,11 @@ const SignUp = (props) => {
     validateChange(event);
     setNewUserState(newFormData);
   };
-
   return (
     <StyledForm>
       <div className="signUp">
         <header>
-          <h1>.Logo</h1>
+        <h1><img src="https://i.imgur.com/i9SkgxT.png" alt="logo" width="100" height="80"/></h1>
           <nav>
             <ul>
               <a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">
@@ -133,12 +120,10 @@ const SignUp = (props) => {
             </ul>
           </nav>
         </header>
-
         <div className="signUpForm">
           <h2>Sign-Up!</h2>
           <p>Track a better sleep.</p>
           <br />
-
           <form onSubmit={formSubmit}>
             <input
               className="username"
@@ -153,7 +138,6 @@ const SignUp = (props) => {
               <p className="error">{formError.username}</p>
             ) : null}
             <br />
-
             <input
               className="email"
               name="email"
@@ -167,7 +151,6 @@ const SignUp = (props) => {
               <p className="error">{formError.email}</p>
             ) : null}
             <br />
-
             <input
               className="first_name"
               name="first_name"
@@ -181,7 +164,6 @@ const SignUp = (props) => {
               <p className="error">{formError.first_name}</p>
             ) : null}
             <br />
-
             <input
               className="last_name"
               name="last_name"
@@ -195,7 +177,6 @@ const SignUp = (props) => {
               <p className="error">{formError.last_name}</p>
             ) : null}
             <br />
-
             <input
               className="password"
               name="password"
@@ -222,16 +203,14 @@ const SignUp = (props) => {
         {/* <pre>{JSON.stringify(newUserState, null, 2)}</pre> */}
         <footer>
           <p2>
-            © 2020 Sleep Tracker, LLC
-            <br />
-            Info@SleepTracker.COM
+          Info@SleepTracker.com<br/>
             <br /> Special Thanks to
             <br /> Lambda School Build Team!
+            <br />© 2020 Sleep Tracker, LLC
           </p2>
         </footer>
       </div>
     </StyledForm>
   );
 };
-
 export default SignUp;
