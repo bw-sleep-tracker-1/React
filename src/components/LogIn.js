@@ -4,6 +4,46 @@ import * as yup from "yup";
 import formSchema from "../validation/formSchema";
 // import axiosWithAuth from '../components/axiosWithAuth'
 import axios from "axios";
+import styled, { keyframes } from "styled-components";
+
+const kf = keyframes`
+50% {
+  transform: scale(0.8);
+}
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  
+`;
+
+const StyledForm = styled.div`
+  opacity: 0;
+  transform: scale(2);
+  animation: ${kf} 2s forwards;
+
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transition: all 0.3s ease-in-out;
+      }
+      button {
+    
+    transition: all 0.8s ease-in-out;
+    &:hover {
+      transition: all 0.8s ease-in-out;
+      
+    }
+  }
+
+    a {
+    
+    transition: all 0.8s ease-in-out;
+    &:hover {
+      transition: all 0.8s ease-in-out;
+      
+    }
+`;
 
 const LogIn = (props) => {
   const logInState = props.logInState;
@@ -36,7 +76,11 @@ const LogIn = (props) => {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    axios.post("https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",logInState)
+    axios
+      .post(
+        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",
+        logInState
+      )
       .then((response) => {
         // localStorage.setItem('token', response.data.payload)
         // history.push('/signup')
@@ -68,59 +112,84 @@ const LogIn = (props) => {
   };
 
   return (
-    <div className="logIn">
-      <header>
-        <h1>.Logo</h1>
-        <nav>
-          <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">Home</a></ul>
-          <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/about.html">About</a></ul>
-          <ul><a href="https://react-dusky.vercel.app/signup">Sign Up</a></ul>
-        </nav>
-      </header>
+    <StyledForm>
+      <div className="logIn">
+        <header>
+          <h1>.Logo</h1>
+          <nav>
+            <ul>
+              <a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">
+                Home
+              </a>
+            </ul>
+            <ul>
+              <a href="https://quizzical-hermann-5f0d21.netlify.app/about.html">
+                About
+              </a>
+            </ul>
+            <ul>
+              <a href="https://react-dusky.vercel.app/signup">Sign Up</a>
+            </ul>
+          </nav>
+        </header>
 
-      <div className="logInForm">
-        <h2>Zzz.</h2>
-        <p>Track a better sleep.</p>
-        <br />
-        <form onSubmit={formSubmit}>
-          <input
-            className="username"
-            name="username"
-            type="text"
-            placeholder="User Name"
-            value={logInState.username}
-            onChange={inputChange}
-          />
+        <div className="logInForm">
+          <h2>Zzz.</h2>
+          <p>Track a better sleep.</p>
           <br />
-          {errors.username.length > 0 ? (
-            <p className="error">{errors.username}</p>
-          ) : null}
+          <form onSubmit={formSubmit}>
+            <input
+              className="username"
+              name="username"
+              type="text"
+              placeholder="User Name"
+              value={logInState.username}
+              onChange={inputChange}
+            />
+            <br />
+            {errors.username.length > 0 ? (
+              <p className="error">{errors.username}</p>
+            ) : null}
+            <br />
+            <input
+              className="password"
+              name="password"
+              type="password"
+              placeholder="Enter your Password"
+              value={logInState.password}
+              onChange={inputChange}
+            />
+            <br />
+            {errors.password.length > 0 ? (
+              <p className="error">{errors.password}</p>
+            ) : null}
+            <br />
+            <button disabled={buttonDisabled}>Login</button>
+          </form>
           <br />
-          <input
-            className="password"
-            name="password"
-            type="password"
-            placeholder="Enter your Password"
-            value={logInState.password}
-            onChange={inputChange}
-          />
           <br />
-          {errors.password.length > 0 ? (
-            <p className="error">{errors.password}</p>
-          ) : null}
-          <br />
-          <button disabled={buttonDisabled}>Login</button>
-        </form>
-        <br />
-        <br />
-        <a href="./signup">
-          Not a Member?
-          <br />
-          Sign-Up to get better sleep.
-        </a>
+          <a href="./signup">
+            Not a Member?
+            <br />
+            Sign-Up to get better sleep.
+          </a>
+        </div>
+
+        <footer>
+          <p2>
+            © 2020 LambdaStudents Sleep
+            <br /> Tracker
+            <br />
+            United States
+            <br />
+            888-555-5555
+            <br />
+            SleepTracker@LAMBDASTUDENTS.COM
+            <br /> Special Thanks to the Build Team!
+          </p2>
+        </footer>
       </div>
-      <pre>{JSON.stringify(logInState, null, 2)}</pre>
-    </div>
+    </StyledForm>
   );
 };
 
