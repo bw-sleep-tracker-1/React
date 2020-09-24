@@ -6,7 +6,7 @@ import signSchema from "../validation/signSchema";
 import axios from "axios";
 
 import styled, { keyframes } from "styled-components";
-
+// styled components
 const kf = keyframes`
 50% {
   transform: scale(0.8);
