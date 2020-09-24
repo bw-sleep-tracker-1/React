@@ -27,23 +27,20 @@ const StyledForm = styled.div`
   transition: all 0.3s ease-in-out;
   &:hover {
     transition: all 0.3s ease-in-out;
-      }
-      button {
-    
+  }
+  button {
     transition: all 0.8s ease-in-out;
     &:hover {
       transition: all 0.8s ease-in-out;
-      
     }
   }
 
-    a {
-    
+  a {
     transition: all 0.8s ease-in-out;
     &:hover {
       transition: all 0.8s ease-in-out;
-      
     }
+  }
 `;
 
 const SignUp = (props) => {
