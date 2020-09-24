@@ -5,11 +5,11 @@ export default yup.object().shape({
     .string()
     .required("Username is required")
     .min(3, "Username must be 3 chars or longer"),
-  fName: yup
+  first_name: yup
     .string()
     .required("fName is required")
     .min(3, "fName must be 3 chars or longer"),
-  lName: yup
+  last_name: yup
     .string()
     .required("lName is required")
     .min(3, "lName must be 3 chars or longer"),
