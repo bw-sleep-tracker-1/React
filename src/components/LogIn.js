@@ -1,8 +1,7 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import formSchema from "../validation/formSchema";
-// import axiosWithAuth from '../components/axiosWithAuth'
 import axios from "axios";
 import styled, { keyframes } from "styled-components";
 
@@ -83,11 +82,11 @@ const LogIn = (props) => {
         logInState
       )
       .then((response) => {
-        // localStorage.setItem('token', response.data.payload)
-        // history.push('/signup')
+        localStorage.setItem('token', response.data.token)
+        window.location ='/wakeform';
 
         setPost(response.data);
-        console.log("success", post);
+        console.log("success", response.data.token, response);
 
         setLogInState({
           username: "",

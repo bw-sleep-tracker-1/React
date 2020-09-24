@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import LogIn from "./components/LogIn";
-// import SignUp from "./components/SignUp";
 import SignUp from "./components/Signup";
-import { Route } from "react-router-dom";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
-import "./App.css";
+
+import WakeForm from './components/WokeForm';
+import SleepList from './components/SleepList';
+import EditForm from './components/EditForm';
+import PrivateRoute from "./components/utils/PrivateRoute";
+
 import "./logInSignUp.css";
+import "./App.css";
+
 
 const App = () => {
   //sign up form state
@@ -68,32 +75,37 @@ const App = () => {
   const [post, setPost] = useState([]);
 
   return (
-    <>
-      <Route exact path="/">
-        <LogIn
-          logInState={logInState}
-          setLogInState={setLogInState}
-          errors={errors}
-          setErrors={setErrors}
-          buttonDisabled={buttonDisabled}
-          post={post}
-          setPost={setPost}
-        />
-      </Route>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LogIn
+            logInState={logInState}
+            setLogInState={setLogInState}
+            errors={errors}
+            setErrors={setErrors}
+            buttonDisabled={buttonDisabled}
+            post={post}
+            setPost={setPost}
+          />
+        </Route>
 
-      <Route path="/signup">
-        <SignUp
-          newUserState={newUserState}
-          setNewUserState={setNewUserState}
-          formError={formError}
-          setFormError={setFormError}
-          buttDisabled={buttDisabled}
-          setButtDisabled={setButtDisabled}
-          userPost={userPost}
-          setUserPost={setUserPost}
-        />
-      </Route>
-    </>
+        <Route path="/signup">
+          <SignUp
+            newUserState={newUserState}
+            setNewUserState={setNewUserState}
+            formError={formError}
+            setFormError={setFormError}
+            buttDisabled={buttDisabled}
+            setButtDisabled={setButtDisabled}
+            userPost={userPost}
+            setUserPost={setUserPost}
+          />
+        </Route>
+        <PrivateRoute exact path='/wokeform' component={WakeForm}/>
+        <PrivateRoute exact path='/sleeplist' component={SleepList} />
+        <PrivateRoute exact path='/editform' component={EditForm} />
+      </Switch>
+    </Router>
   );
 };
 

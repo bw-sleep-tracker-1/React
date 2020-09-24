@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: 'https://lambda-bw-sleep-tracker.herokuapp.com/auth'
+        baseURL: 'https://lambda-bw-sleep-tracker.herokuapp.com/'
     });
 };
 export default axiosWithAuth;
