@@ -28,14 +28,14 @@ import "./App.css";
 // };
 
 // const initialUsers = [];
-const initialDisabled = true;
+// const initialDisabled = true;
 
 const App = () => {
-  const [users, setUsers] = useState({
+  const [newUserState, setNewUserState] = useState({
     username: "",
     email: "",
-    fName: "",
-    lName: "",
+    first_name: "",
+    last_name: "",
     password: "",
   });
 
@@ -43,21 +43,21 @@ const App = () => {
 
   // });
 
-  const [formErrors, setFormErrors] = useState({
+  const [formError, setFormError] = useState({
     username: "",
     email: "",
-    fName: "",
-    lName: "",
+    first_name: "",
+    last_name: "",
     password: "",
   });
 
-  const [disabled, setDisabled] = useState(initialDisabled);
+  const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
-    signSchema.isValid(users).then((valid) => {
-      setDisabled(!valid);
+    signSchema.isValid(newUserState).then((valid) => {
+      setButtDisabled(!valid);
     });
-  }, [users]);
+  }, [newUserState]);
 
   const [userPost, setUserPost] = useState([]);
 
@@ -182,14 +182,14 @@ const App = () => {
 
       <Route path="/signup">
         <SignUp
-          users={users}
-          setUsers={setUsers}
+          newUserState={newUserState}
+          setNewUserState={setNewUserState}
           // formValues={formValues}
           // setFormValues={setFormValues}
-          formErrors={formErrors}
-          setFormErrors={setFormErrors}
-          disabled={disabled}
-          setDisabled={setDisabled}
+          formError={formError}
+          setFormError={setFormError}
+          buttDisabled={buttDisabled}
+          setButtDisabled={setButtDisabled}
           userPost={userPost}
           setUserPost={setUserPost}
         />
