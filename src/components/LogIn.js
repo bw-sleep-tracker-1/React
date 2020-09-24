@@ -177,15 +177,11 @@ const LogIn = (props) => {
 
         <footer>
           <p2>
-            © 2020 LambdaStudents Sleep
-            <br /> Tracker
+            © 2020 Sleep Tracker, LLC
             <br />
-            United States
-            <br />
-            888-555-5555
-            <br />
-            SleepTracker@LAMBDASTUDENTS.COM
-            <br /> Special Thanks to the Build Team!
+            Info@SleepTracker.COM
+            <br /> Special Thanks to
+            <br /> Lambda School Build Team!
           </p2>
         </footer>
       </div>

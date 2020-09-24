@@ -225,7 +225,8 @@ const SignUp = (props) => {
             © 2020 Sleep Tracker, LLC
             <br />
             Info@SleepTracker.COM
-            <br /> Special Thanks to Lambda School Build Team!
+            <br /> Special Thanks to
+            <br /> Lambda School Build Team!
           </p2>
         </footer>
       </div>
