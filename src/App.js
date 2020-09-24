@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from "react";
 import LogIn from "./components/LogIn";
-import SignUp from "./components/Signup";
+import SignUp from "./components/SignUp";
 import { Route } from "react-router-dom";
-import axios from "axios";
-import * as yup from "yup";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
-// import schema from "./components/validation/signSchema";
 import "./App.css";
 
-//signup Form
 
-// const initialFormValues = {
-//   username: "",
-//   email: "",
-//   fName: "",
-//   lName: "",
-//   password: "",
-// };
 
+<<<<<<< HEAD
 // const initialFormErrors = {
 //   username: "",
 //   email: "",
@@ -32,25 +22,45 @@ import "./App.css";
 
 const App = () => {
   const [newUserState, setNewUserState] = useState({
+=======
+
+const App = () => {
+
+
+  //sign up form state 
+
+// initial state
+  const [newUserState, setNewUserState] = useState({
+
+>>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
+
   });
 
-  // const [formValues, setFormValues] = useState({
 
-  // });
-
+  //state for errors
   const [formError, setFormError] = useState({
+
+<<<<<<< HEAD
+  const [formError, setFormError] = useState({
+=======
+>>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
+
   });
 
+<<<<<<< HEAD
+=======
+  //button state 
+>>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
   const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
@@ -58,87 +68,16 @@ const App = () => {
       setButtDisabled(!valid);
     });
   }, [newUserState]);
+<<<<<<< HEAD
+=======
 
+>>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
+
+  //post state 
   const [userPost, setUserPost] = useState([]);
 
-  //    const getUsers = () => {
-  //   axios
-  //     .get("https://reqres.in/api/users")
-  //     .then((res) => {
-  //       setUsers(res.data);
-  //     })
-  //     .catch((err) => {
-  //       debugger;
-  //       console.log(err);
-  //     });
-  // };
 
-  // const postNewUser = (newUser) => {
-  //   axios
-  //     .post("https://reqres.in/api/users", newUser)
-  //     .then((res) => {
-  //       setUsers([...users, res.data]);
-  //       setFormValues(initialFormValues);
-  //     })
-  //     .catch((err) => {
-  //       debugger;
-  //       console.log(err);
-  //     })
-  //     .finally(() => {
-  //       // this woudl be tbe good spot to clean the form
-  //     });
-  // };
 
-  // const validate = (name, value) => {
-  //   yup
-  //     .reach(schema, name)
-
-  //     .validate(value)
-
-  //     .then((valid) => {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         [name]: "",
-  //       });
-  //     })
-
-  //     .catch((err) => {
-  //       setFormErrors({
-  //         ...formErrors,
-  //         [name]: err.errors[0],
-  //       });
-  //     });
-  // };
-
-  // const inputChange = (name, value) => {
-  //   validate(name, value);
-  //   setFormValues({
-  //     ...formValues,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const formSubmit = () => {
-  //   const newUser = {
-  //     username: formValues.username.trim(),
-  //     email: formValues.email.trim(),
-  //     password: formValues.password.trim(),
-  //     fName: formValues.fName.trim(),
-  //     lName: formValues.lName.trim(),
-  //   };
-
-  //   postNewUser(newUser);
-  // };
-
-  // useEffect(() => {
-  //   getUsers();
-  // }, []);
-
-  // useEffect(() => {
-  //   schema.isValid(formValues).then((valid) => {
-  //     setDisabled(!valid);
-  //   });
-  // }, [formValues]);
 
   ///log in form
 
@@ -184,8 +123,11 @@ const App = () => {
         <SignUp
           newUserState={newUserState}
           setNewUserState={setNewUserState}
+<<<<<<< HEAD
           // formValues={formValues}
           // setFormValues={setFormValues}
+=======
+>>>>>>> fbfec5bbf97c5207548c8451957d67518d10dc4e
           formError={formError}
           setFormError={setFormError}
           buttDisabled={buttDisabled}

@@ -31,6 +31,18 @@ nav{
   
 }
 
+ul {
+
+  font-family: 'Mulish', sans-serif;
+  font-weight: bolder;
+  color: #5B3F8D;
+  
+}
+
+ul:hover {
+  color: #5B3F8D;
+}
+
 h1{
   font-size: 45px;
   margin-left: 50px;
@@ -39,7 +51,7 @@ h1{
 }
 
 .logInForm{
-  width: 30%;
+  width: 300px;
   padding-bottom: 45px;
   margin-top: 70px;
   background-color: #7A69C8;
@@ -47,9 +59,11 @@ h1{
 }
 
 .signUpForm{
-  width: 30%;
+  width: 300px;
   padding-bottom: 45px;
+  margin-top: 70px;
   background-color: #7A69C8;
+  box-shadow: 8px 8px #5B3F8D;
 }
 
 h2{
@@ -85,6 +99,8 @@ button{
 
 button:hover{
   background-color:#69A7C9 ;
+  cursor: pointer;
+  
 }
 
 a{
