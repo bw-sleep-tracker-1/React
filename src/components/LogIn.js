@@ -72,9 +72,9 @@ const LogIn = (props) => {
       <header>
         <h1>.Logo</h1>
         <nav>
-          <ul className="aNav">Home</ul>
-          <ul className="bNav">About</ul>
-          <ul className="cNav">Sign Up</ul>
+          <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">Home</a></ul>
+          <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/about.html">About</a></ul>
+          <ul><a href="https://react-dusky.vercel.app/signup">Sign Up</a></ul>
         </nav>
       </header>
 
