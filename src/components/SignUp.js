@@ -80,9 +80,9 @@ const SignUp = (props) => {
       <header>
         <h1>.Logo</h1>
         <nav>
-          <ul>Home</ul>
-          <ul>About</ul>
-          <ul>Sign-In</ul>
+        <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/index.html">Home</a></ul>
+          <ul><a href="https://quizzical-hermann-5f0d21.netlify.app/about.html">About</a></ul>
+          <ul><a href="https://react-dusky.vercel.app/">Login</a></ul>
         </nav>
       </header>
 
@@ -162,7 +162,7 @@ const SignUp = (props) => {
             <p className="error">{formError.password}</p>
           ) : null}
           <br />
-          <button disabled={buttDisabled}>Log In</button>
+          <button disabled={buttDisabled}>Submit</button>
         </form>
         <br />
         <br />

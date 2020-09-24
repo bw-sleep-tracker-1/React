@@ -31,16 +31,17 @@ nav{
   
 }
 
-ul {
+ul a {
 
   font-family: 'Mulish', sans-serif;
   font-weight: bolder;
   color: #5B3F8D;
+  text-decoration: none;
   
 }
 
-ul:hover {
-  color: #5B3F8D;
+ul a:hover {
+  color: black;
 }
 
 h1{
