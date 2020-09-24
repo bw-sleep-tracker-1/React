@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
 import "./App.css";
+import "./logInSignUp.css";
 
 const App = () => {
   //sign up form state
