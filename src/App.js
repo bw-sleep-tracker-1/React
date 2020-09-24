@@ -5,39 +5,30 @@ import { Route } from "react-router-dom";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
 import "./App.css";
-
-
-
+import "./logInSignUp.css";
 
 const App = () => {
+  //sign up form state
 
-
-  //sign up form state 
-
-// initial state
+  // initial state
   const [newUserState, setNewUserState] = useState({
-
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
-
 
   //state for errors
   const [formError, setFormError] = useState({
-
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
 
-  //button state 
+  //button state
   const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
@@ -46,12 +37,8 @@ const App = () => {
     });
   }, [newUserState]);
 
-
-  //post state 
+  //post state
   const [userPost, setUserPost] = useState([]);
-
-
-
 
   ///log in form
 

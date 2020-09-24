@@ -1,4 +1,4 @@
-/* .logIn {
+.logIn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,12 +34,12 @@ nav {
 ul a {
   font-family: "Mulish", sans-serif;
   font-weight: bolder;
-  color: #5b3f8d;
+  color: white;
   text-decoration: none;
 }
 
 ul a:hover {
-  color: black;
+  color: #69a7c9;
 }
 
 h1 {
@@ -82,15 +82,16 @@ p {
 }
 
 p2 {
-  color: #010b24;
+  color: #71c0eb;
   background-color: #7a69c8;
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   display: block;
-  width: 300px;
+  width: 230px;
   padding-top: 25px;
   padding-bottom: 25px;
+  padding-left: 25px;
   margin-top: 70px;
   text-decoration: none;
   display: flex;
@@ -119,4 +120,4 @@ button:hover {
 a {
   font-family: "Mulish", sans-serif;
   color: white;
-} */
+}

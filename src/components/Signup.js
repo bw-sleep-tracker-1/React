@@ -1,9 +1,10 @@
 import React from "react";
 // import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import formSchema from "../validation/formSchema";
+import signSchema from "../validation/signSchema";
 // import axiosWithAuth from '../components/axiosWithAuth'
 import axios from "axios";
+
 import styled, { keyframes } from "styled-components";
 
 const kf = keyframes`
@@ -45,31 +46,31 @@ const StyledForm = styled.div`
     }
 `;
 
-const LogIn = (props) => {
-  const logInState = props.logInState;
-  const setLogInState = props.setLogInState;
-  const errors = props.errors;
-  const setErrors = props.setErrors;
-  const buttonDisabled = props.buttonDisabled;
-  const post = props.post;
-  const setPost = props.setPost;
+const SignUp = (props) => {
+  const newUserState = props.newUserState;
+  const setNewUserState = props.setNewUserState;
+  const formError = props.formError;
+  const setFormError = props.setFormError;
+  const buttDisabled = props.buttDisabled;
+  const userPost = props.userPost;
+  const setUserPost = props.setUserPost;
 
   //validation
 
   const validateChange = (e) => {
     yup
-      .reach(formSchema, e.target.name)
+      .reach(signSchema, e.target.name)
       .validate(e.target.value)
       .then((valid) => {
-        setErrors({
-          ...errors,
+        setFormError({
+          ...formError,
           [e.target.name]: "",
         });
       })
       .catch((err) => {
-        setErrors({
-          ...errors,
-          [e.target.name]: err.errors[0],
+        setFormError({
+          ...formError,
+          [e.target.name]: err.errors[0], /// this need to say "errors"
         });
       });
   };
@@ -78,18 +79,18 @@ const LogIn = (props) => {
     event.preventDefault();
     axios
       .post(
-        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",
-        logInState
+        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/signup",
+        newUserState
       )
       .then((response) => {
-        // localStorage.setItem('token', response.data.payload)
-        // history.push('/signup')
+        setUserPost(response.data);
+        console.log("success", userPost);
 
-        setPost(response.data);
-        console.log("success", post);
-
-        setLogInState({
+        setNewUserState({
           username: "",
+          email: "",
+          first_name: "",
+          last_name: "",
           password: "",
         });
       })
@@ -101,19 +102,19 @@ const LogIn = (props) => {
   const inputChange = (event) => {
     event.persist();
     const newFormData = {
-      ...logInState,
+      ...newUserState,
       [event.target.name]:
         event.target.type === "checkbox"
           ? event.target.checked
           : event.target.value,
     };
     validateChange(event);
-    setLogInState(newFormData);
+    setNewUserState(newFormData);
   };
 
   return (
     <StyledForm>
-      <div className="logIn">
+      <div className="signUp">
         <header>
           <h1>.Logo</h1>
           <nav>
@@ -128,53 +129,97 @@ const LogIn = (props) => {
               </a>
             </ul>
             <ul>
-              <a href="https://react-dusky.vercel.app/signup">Sign Up</a>
+              <a href="https://react-dusky.vercel.app/">Login</a>
             </ul>
           </nav>
         </header>
 
-        <div className="logInForm">
-          <h2>Zzz.</h2>
+        <div className="signUpForm">
+          <h2>Sign-Up!</h2>
           <p>Track a better sleep.</p>
           <br />
+
           <form onSubmit={formSubmit}>
             <input
               className="username"
               name="username"
               type="text"
               placeholder="User Name"
-              value={logInState.username}
+              value={newUserState.username}
               onChange={inputChange}
             />
             <br />
-            {errors.username.length > 0 ? (
-              <p className="error">{errors.username}</p>
+            {formError.username.length > 0 ? (
+              <p className="error">{formError.username}</p>
             ) : null}
             <br />
+
+            <input
+              className="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={newUserState.email}
+              onChange={inputChange}
+            />
+            <br />
+            {formError.email.length > 0 ? (
+              <p className="error">{formError.email}</p>
+            ) : null}
+            <br />
+
+            <input
+              className="first_name"
+              name="first_name"
+              type="text"
+              placeholder="First Name"
+              value={newUserState.first_name}
+              onChange={inputChange}
+            />
+            <br />
+            {formError.first_name.length > 0 ? (
+              <p className="error">{formError.first_name}</p>
+            ) : null}
+            <br />
+
+            <input
+              className="last_name"
+              name="last_name"
+              type="text"
+              placeholder="Last Name"
+              value={newUserState.last_name}
+              onChange={inputChange}
+            />
+            <br />
+            {formError.last_name.length > 0 ? (
+              <p className="error">{formError.last_name}</p>
+            ) : null}
+            <br />
+
             <input
               className="password"
               name="password"
               type="password"
               placeholder="Enter your Password"
-              value={logInState.password}
+              value={newUserState.password}
               onChange={inputChange}
             />
             <br />
-            {errors.password.length > 0 ? (
-              <p className="error">{errors.password}</p>
+            {formError.password.length > 0 ? (
+              <p className="error">{formError.password}</p>
             ) : null}
             <br />
-            <button disabled={buttonDisabled}>Login</button>
+            <button disabled={buttDisabled}>Submit</button>
           </form>
           <br />
           <br />
-          <a href="./signup">
-            Not a Member?
+          <a href="./">
+            Already a Member?
             <br />
-            Sign-Up to get better sleep.
+            Log-In here.
           </a>
         </div>
-
+        {/* <pre>{JSON.stringify(newUserState, null, 2)}</pre> */}
         <footer>
           <p2>
             © 2020 Sleep Tracker, LLC
@@ -189,4 +234,4 @@ const LogIn = (props) => {
   );
 };
 
-export default LogIn;
+export default SignUp;
