@@ -1,7 +1,8 @@
-import { DATA_LOADING, FETCH_DATA_SUCCESS, EDIT_DATA, DELETE_DATA, DATA_FAIL } from '../actions';
+import { DATA_LOADING, GET_USER, FETCH_DATA_SUCCESS, EDIT_DATA, DELETE_DATA, DATA_FAIL } from '../actions';
 
 const initialState = {
     data: [],
+    userId: '',
     isLoading: false,
     error:'Error loading'
 };
@@ -14,6 +15,13 @@ const reducer = (state = initialState, action) => {
                 isLoading: true,
                 error: ''
             }
+        case GET_USER:
+            return {
+                ...state,
+                userId: action.payload,
+                isLoading: false,
+                error: ''
+        }
         case FETCH_DATA_SUCCESS:
             return {
                 ...state,

@@ -1,9 +1,10 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 import * as yup from "yup";
 import signSchema from "../validation/signSchema";
-// import axiosWithAuth from '../components/axiosWithAuth'
-import axios from "axios";
+import { signUser } from '../components/actions/';
+
+// import axios from "axios";
 import styled, { keyframes } from "styled-components";
 // styled components
 const kf = keyframes`
@@ -67,16 +68,17 @@ const SignUp = (props) => {
   };
   const formSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/signup",
-        newUserState
-      )
-      .then((response) => {
-        setUserPost(response.data);
-        console.log("success", userPost);
-        localStorage.setItem('token', response.data.token)
-        window.location = '/wokeform';
+    // axios
+    //   .post(
+    //     "https://lambda-bw-sleep-tracker.herokuapp.com/auth/signup",
+    //     newUserState
+    //   )
+    //   .then((response) => {
+    //     setUserPost(response.data);
+    //     console.log("success", userPost, response);
+    //     localStorage.setItem('token', response.data.token)
+    //     // window.location = '/wokeform';
+    props.signUser(newUserState)
         setNewUserState({
           username: "",
           email: "",
@@ -84,10 +86,10 @@ const SignUp = (props) => {
           last_name: "",
           password: "",
         });
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+      // })
+      // .catch((err) => {
+      //   console.log(err.response);
+      // });
   };
   const inputChange = (event) => {
     event.persist();
@@ -215,4 +217,5 @@ const SignUp = (props) => {
     </StyledForm>
   );
 };
-export default SignUp;
+
+export default connect(null, { signUser })(SignUp);

@@ -51,6 +51,7 @@ const SleepList = props => {
 const mapStateToProps = state => {
     return {
         data: state.data,
+        userId: state.userId,
         isLoading: state.isLoading,
         error: state.error
     };

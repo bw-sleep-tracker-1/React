@@ -13,6 +13,7 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 
 import "./logInSignUp.css";
 import "./App.css";
+import Dashboard from "./components/Dashboard";
 
 
 const App = () => {
@@ -104,6 +105,7 @@ const App = () => {
         <PrivateRoute exact path='/wokeform' component={WakeForm}/>
         <PrivateRoute exact path='/sleeplist' component={SleepList} />
         <PrivateRoute exact path='/editform' component={EditForm} />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
       </Switch>
     </Router>
   );
