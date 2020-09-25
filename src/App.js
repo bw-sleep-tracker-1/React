@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
+// import SignUp from "./components/SignUp";
+import SignUp from "./components/Signup";
 import { Route } from "react-router-dom";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
