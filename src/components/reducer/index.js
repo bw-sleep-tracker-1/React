@@ -7,6 +7,7 @@ const initialState = {
     error:'Error loading'
 };
 
+
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case DATA_LOADING:

@@ -51,28 +51,28 @@ const EditForm = (props) => {
         <img src='https://a.slack-edge.com/production-standard-emoji-assets/10.2/google-medium/2639-fe0f.png' alt='' />
         <input
             type='checkbox'
-            name='day_rating'
+            name='wake_rating'
             value='1'
             onChange={handleCheck}
         />
         <img src='https://a.slack-edge.com/production-standard-emoji-assets/10.2/google-medium/1f642.png' alt='' />
         <input
             type='checkbox'
-            name='day_rating'
+            name='wake_rating'
             value='2'
             onChange={handleCheck}
         />
         <img src='https://a.slack-edge.com/production-standard-emoji-assets/10.2/google-medium/263a-fe0f.png' alt='' />
         <input
             type='checkbox'
-            name='day_rating'
+            name='wake_rating'
             value='3'
             onChange={handleCheck}
         />
         <img src='https://a.slack-edge.com/production-standard-emoji-assets/10.2/google-medium/1f604.png' alt='' />
         <input
             type='checkbox'
-            name='day_rating'
+            name='wake_rating'
             value='4'
             onChange={handleCheck}
         /><br />
