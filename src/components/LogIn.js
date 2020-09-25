@@ -83,7 +83,7 @@ const LogIn = (props) => {
       )
       .then((response) => {
         localStorage.setItem('token', response.data.token)
-        window.location ='/wakeform';
+        window.location ='/wokeform';
 
         setPost(response.data);
         console.log("success", response.data.token, response);

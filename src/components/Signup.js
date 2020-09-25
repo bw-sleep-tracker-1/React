@@ -75,6 +75,8 @@ const SignUp = (props) => {
       .then((response) => {
         setUserPost(response.data);
         console.log("success", userPost);
+        localStorage.setItem('token', response.data.token)
+        window.location = '/wokeform';
         setNewUserState({
           username: "",
           email: "",

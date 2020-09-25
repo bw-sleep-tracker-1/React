@@ -9,7 +9,7 @@ export const DATA_FAIL = 'DATA_FAIL';
 export const fetchData = (id) => (dispatch) => {
     dispatch({ type: DATA_LOADING })
     axiosWithAuth()
-        .get(`/users/${id}/entries`)
+        .get(`/users/1/entries`)
         .then(res =>
             dispatch({type: FETCH_DATA_SUCCESS, payload: res.data})
         )
@@ -21,7 +21,7 @@ export const fetchData = (id) => (dispatch) => {
 export const addData = (data, id) => (dispatch) => {
     dispatch({ type: DATA_LOADING })
     axiosWithAuth()
-        .post(`/users/${id}/entries`, data)
+        .post(`/users/1/entries`, data)
         .then(res => {
             dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
         })
