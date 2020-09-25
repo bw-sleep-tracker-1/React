@@ -38,7 +38,7 @@ const LogIn = (props) => {
     axios.post("https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",logInState)
       .then((response) => {
         localStorage.setItem('token', response.data.token)
-        window.location ='/wakeform';
+        window.location ='/wokeform';
 
         setPost(response.data);
         console.log("success", response.data.token, response);
