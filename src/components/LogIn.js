@@ -1,9 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 import * as yup from "yup";
 import formSchema from "../validation/formSchema";
-import axios from "axios";
+// import axios from "axios";
 import styled, { keyframes } from "styled-components";
+import { postUser } from "../components/actions";
+
 
 const kf = keyframes`
 50% {
@@ -76,26 +78,26 @@ const LogIn = (props) => {
 
   const formSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        "https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",
-        logInState
-      )
-      .then((response) => {
-        localStorage.setItem('token', response.data.token)
-        window.location ='/wokeform';
+    // axios
+    //   .post(
+    //     "https://lambda-bw-sleep-tracker.herokuapp.com/auth/login",
+    //     logInState
+    //   )
+    //   .then((response) => {
+    //     localStorage.setItem('token', response.data.token)
+    //     // window.location ='/wokeform';
 
-        setPost(response.data);
-        console.log("success", response.data.token, response);
-
+    //     setPost(response.data);
+    //     console.log("success", response.data.token, response);
+    props.postUser(logInState)
         setLogInState({
           username: "",
           password: "",
         });
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+      // })
+      // .catch((err) => {
+      //   console.log(err.response);
+      // });
   };
 
   const inputChange = (event) => {
@@ -189,4 +191,4 @@ const LogIn = (props) => {
   );
 };
 
-export default LogIn;
+export default connect(null, { postUser })(LogIn);

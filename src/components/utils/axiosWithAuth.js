@@ -3,7 +3,7 @@ const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
     return axios.create({
         headers: {
-            Authorization: token
+            authorization: token
         },
         baseURL: 'https://lambda-bw-sleep-tracker.herokuapp.com/'
     });

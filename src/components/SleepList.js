@@ -7,7 +7,7 @@ import { fetchData, editData, deleteData } from './actions';
 const SleepList = props => {
 
     useEffect(() => {
-        props.fetchData();
+        props.fetchData(props.userId);
     }, [props.data.entries.length]);
 
     const handleDelete = (id) => {
@@ -51,6 +51,7 @@ const SleepList = props => {
 const mapStateToProps = state => {
     return {
         data: state.data,
+        userId: state.userId,
         isLoading: state.isLoading,
         error: state.error
     };
