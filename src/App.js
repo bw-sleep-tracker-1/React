@@ -1,48 +1,42 @@
 import React, { useState, useEffect } from "react";
-import LogIn from "./components/LogIn";
-import SignUp from "./components/SignUp";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import LogIn from "./components/LogIn";
+import SignUp from "./components/Signup";
 import formSchema from "./validation/formSchema";
 import signSchema from "./validation/signSchema";
-import "./App.css";
 
 import WakeForm from './components/WokeForm';
 import SleepList from './components/SleepList';
 import EditForm from './components/EditForm';
 import PrivateRoute from "./components/utils/PrivateRoute";
 
-
+import "./logInSignUp.css";
+import "./App.css";
 
 
 const App = () => {
+  //sign up form state
 
-
-  //sign up form state 
-
-// initial state
+  // initial state
   const [newUserState, setNewUserState] = useState({
-
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
-
 
   //state for errors
   const [formError, setFormError] = useState({
-
     username: "",
     email: "",
     first_name: "",
     last_name: "",
     password: "",
-
   });
 
-  //button state 
+  //button state
   const [buttDisabled, setButtDisabled] = useState(true);
 
   useEffect(() => {
@@ -51,12 +45,8 @@ const App = () => {
     });
   }, [newUserState]);
 
-
-  //post state 
+  //post state
   const [userPost, setUserPost] = useState([]);
-
-
-
 
   ///log in form
 
